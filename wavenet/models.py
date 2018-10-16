@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-from layers import (_causal_linear, _output_linear, conv1d,
+from wavenet.layers import (_causal_linear, _output_linear, conv1d,
                     dilated_conv1d)
 
 
@@ -79,6 +79,7 @@ class Model(object):
             cost = self._train(inputs, targets)
             if cost < 1e-1:
                 terminal = True
+            print("training iteration " + str(i) + " cost = " + str(cost))
             losses.append(cost)
             if i % 50 == 0:
                 plt.plot(losses)
